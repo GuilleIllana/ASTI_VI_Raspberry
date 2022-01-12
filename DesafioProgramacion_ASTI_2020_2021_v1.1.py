@@ -229,13 +229,11 @@ while r.leerT() < Tfin and not r.leerFinFases():
     # ----------------------------------
     prev_dist = r.leerDistDest()
     def compute_wheel_vels(distancia):
-        #print r.leerDistSensor()
         if distancia < r.leerDistDest():
-            print "vas pal otro lado" + str(r.leerFasesSuperadas())
-            return -1, 1
-        if r.leerDistSensor()>0:
-            return 1,0.7
-        return 0.7,1
+            return -2, 2
+        if r.leerDistSensor() > 0:
+            return 2,1.9
+        return  1.9,2
 
     # ------------------------------------
     # } No tocar desde aqui
@@ -250,6 +248,7 @@ while r.leerT() < Tfin and not r.leerFinFases():
         l_vel, r_vel = compute_wheel_vels(prev_dist)
         r.fijarVel(l_vel, r_vel)
         prev_dist = r.leerDistDest()
+
         # ------------------------------------
         # } No tocar desde aqui
         # ----------------------------------
